@@ -1,0 +1,186 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>CachePerformance | Dashboard</title>
+
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+</head>
+<body>
+
+<header class="encabezado">
+    <div class="contenedor encabezado-flex">
+        <div class="marca">
+            <div class="logo">CP</div>
+            <div>
+                <h1>CachePerformance</h1>
+                <p>Java · Spring Boot · H2 · Caffeine</p>
+            </div>
+        </div>
+
+        <span class="estado" id="estadoServidor">
+            Conectando...
+        </span>
+    </div>
+</header>
+
+<main class="contenedor">
+
+    <section class="introduccion">
+        <span class="etiqueta">LABORATORIO DE RENDIMIENTO</span>
+        <h2>Comparador de consultas</h2>
+        <p>
+            Analiza el tiempo de acceso a 10.000 registros
+            tecnológicos, con y sin memoria caché.
+        </p>
+    </section>
+
+    <section class="paneles">
+
+        <article class="tarjeta sin-cache">
+            <div class="tarjeta-cabecera">
+                <span class="icono">DB</span>
+                <span class="tipo">BASE DE DATOS</span>
+            </div>
+
+            <h3>Consulta sin caché</h3>
+            <p class="descripcion">
+                Acceso directo a H2 en cada ejecución.
+            </p>
+
+            <div class="metrica">
+                <span>Última ejecución</span>
+                <strong id="ultimoSin">--</strong>
+            </div>
+
+            <div class="metricas-secundarias">
+                <div>
+                    <span>Promedio acumulado</span>
+                    <strong id="promedioSin">--</strong>
+                </div>
+                <div>
+                    <span>Ejecuciones</span>
+                    <strong id="ejecucionesSin">0</strong>
+                </div>
+            </div>
+
+            <button id="btnSin" class="boton boton-azul">
+                Ejecutar sin caché
+            </button>
+        </article>
+
+        <article class="tarjeta con-cache">
+            <div class="tarjeta-cabecera">
+                <span class="icono">⚡</span>
+                <span class="tipo">MEMORIA CACHÉ</span>
+            </div>
+
+            <h3>Consulta con caché</h3>
+            <p class="descripcion">
+                Reutilización de resultados mediante Caffeine.
+            </p>
+
+            <div class="metrica">
+                <span>Última ejecución</span>
+                <strong id="ultimoCon">--</strong>
+            </div>
+
+            <div class="metricas-secundarias">
+                <div>
+                    <span>Promedio acumulado</span>
+                    <strong id="promedioCon">--</strong>
+                </div>
+                <div>
+                    <span>Ejecuciones</span>
+                    <strong id="ejecucionesCon">0</strong>
+                </div>
+            </div>
+
+            <button id="btnCon" class="boton boton-verde">
+                Ejecutar con caché
+            </button>
+        </article>
+
+    </section>
+
+    <section class="resultados">
+        <article class="tarjeta grafica">
+            <div class="seccion-titulo">
+                <div>
+                    <h3>Comparación de rendimiento</h3>
+                    <p>Tiempo promedio por tipo de consulta</p>
+                </div>
+                <span class="etiqueta">Milisegundos</span>
+            </div>
+
+            <div class="barra-grupo">
+                <div class="barra-etiqueta">
+                    <span>Sin caché</span>
+                    <strong id="barraValorSin">--</strong>
+                </div>
+                <div class="barra-fondo">
+                    <div id="barraSin" class="barra azul"></div>
+                </div>
+            </div>
+
+            <div class="barra-grupo">
+                <div class="barra-etiqueta">
+                    <span>Con caché</span>
+                    <strong id="barraValorCon">--</strong>
+                </div>
+                <div class="barra-fondo">
+                    <div id="barraCon" class="barra verde"></div>
+                </div>
+            </div>
+
+            <p class="nota">
+                Los promedios incluyen todas las ejecuciones,
+                incluso la primera carga de caché.
+            </p>
+        </article>
+
+        <article class="tarjeta resumen">
+            <span class="etiqueta">ANÁLISIS GLOBAL</span>
+            <h3>Mejora de rendimiento</h3>
+            <div class="porcentaje" id="mejora">--</div>
+            <p id="descripcionMejora">
+                Ejecuta consultas de ambos tipos para comparar.
+            </p>
+
+            <div class="dato-total">
+                <span>Registros disponibles</span>
+                <strong id="totalProductos">10.000</strong>
+            </div>
+        </article>
+    </section>
+
+    <section class="acciones">
+        <button id="btnActualizar" class="boton boton-secundario">
+            Actualizar estadísticas
+        </button>
+
+        <button id="btnLimpiar" class="boton boton-secundario">
+            Limpiar caché
+        </button>
+
+        <button id="btnReiniciar" class="boton boton-peligro">
+            Reiniciar estadísticas
+        </button>
+    </section>
+
+    <p id="mensaje" class="mensaje" role="status"
+       aria-live="polite"></p>
+
+</main>
+
+<footer>
+    CachePerformanceApp · Diseño y Arquitectura de Software
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,215 @@
+
+:root {
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    color: #e9edf7;
+    background: #0b1020;
+}
+
+* { box-sizing: border-box; }
+
+body { margin: 0; }
+
+.contenedor {
+    width: min(1120px, 92%);
+    margin: auto;
+}
+
+.encabezado {
+    background: #11182b;
+    border-bottom: 1px solid #27334b;
+    padding: 20px 0;
+}
+
+.encabezado-flex, .marca, .seccion-titulo,
+.tarjeta-cabecera, .barra-etiqueta,
+.dato-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.marca { justify-content: flex-start; }
+
+.logo {
+    background: #3957e8;
+    padding: 14px;
+    border-radius: 14px;
+    font-weight: 800;
+}
+
+h1, h2, h3, p { margin-top: 0; }
+h1 { font-size: 21px; margin-bottom: 4px; }
+h2 { font-size: clamp(25px, 4vw, 36px); }
+h3 { font-size: 20px; }
+
+p, .descripcion { color: #9ba9c2; line-height: 1.6; }
+
+.encabezado p { margin: 0; font-size: 13px; }
+
+.estado, .etiqueta, .tipo {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .5px;
+}
+
+.estado {
+    padding: 9px 12px;
+    color: #fbbf24;
+    background: #362c1c;
+    border-radius: 20px;
+}
+
+.estado.conectado {
+    background: #14392d;
+    color: #4ade80;
+}
+
+.introduccion { margin: 45px 0 30px; }
+.etiqueta { color: #8ba4ff; }
+
+.paneles, .resultados {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    margin-bottom: 24px;
+}
+
+.resultados { grid-template-columns: 1.5fr 1fr; }
+
+.tarjeta {
+    background: #151e32;
+    border: 1px solid #2a354b;
+    border-radius: 18px;
+    padding: 28px;
+    min-width: 0;
+}
+
+.tarjeta-cabecera { margin-bottom: 23px; }
+
+.icono {
+    display: inline-grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: #263965;
+    font-weight: 800;
+}
+
+.con-cache .icono { background: #174632; }
+
+.tipo { color: #9ba9c2; }
+
+.metrica {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 28px 0;
+}
+
+.metrica span,
+.metricas-secundarias span {
+    color: #9ba9c2;
+    font-size: 13px;
+}
+
+.metrica strong {
+    font-size: clamp(26px, 4vw, 38px);
+}
+
+.metricas-secundarias {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.metricas-secundarias div {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    background: #202b41;
+    padding: 15px;
+    border-radius: 11px;
+}
+
+.metricas-secundarias strong { font-size: 20px; }
+
+.boton {
+    border: none;
+    border-radius: 10px;
+    color: white;
+    padding: 14px 18px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity .2s, transform .2s;
+}
+
+.boton:hover { opacity: .86; transform: translateY(-1px); }
+.boton:disabled { opacity: .5; cursor: wait; }
+
+.boton-azul { background: #4361ee; width: 100%; }
+.boton-verde { background: #168653; width: 100%; }
+.boton-secundario { background: #303d55; }
+.boton-peligro { background: #963e4b; }
+
+.seccion-titulo { margin-bottom: 30px; }
+.seccion-titulo p { font-size: 13px; margin: 0; }
+
+.barra-grupo { margin-bottom: 27px; }
+.barra-etiqueta { margin-bottom: 12px; font-size: 14px; }
+
+.barra-fondo {
+    height: 18px;
+    background: #2a354b;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.barra {
+    width: 0;
+    height: 100%;
+    border-radius: 10px;
+    transition: width .4s ease;
+}
+
+.azul { background: #5376fa; }
+.verde { background: #29c78a; }
+
+.nota { font-size: 12px; margin: 30px 0 0; }
+
+.porcentaje {
+    font-size: clamp(34px, 5vw, 52px);
+    font-weight: 800;
+    margin: 28px 0 10px;
+}
+
+.dato-total {
+    margin-top: 35px;
+    border-top: 1px solid #354159;
+    padding-top: 20px;
+    font-size: 14px;
+}
+
+.acciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.mensaje { min-height: 25px; margin: 18px 0; }
+
+footer {
+    text-align: center;
+    color: #8290aa;
+    padding: 35px 15px;
+    font-size: 12px;
+}
+
+@media (max-width: 720px) {
+    .paneles, .resultados { grid-template-columns: 1fr; }
+    .tarjeta { padding: 21px; }
+    .encabezado-flex { flex-wrap: wrap; }
+}
