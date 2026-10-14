@@ -124,4 +124,32 @@ Al ejecutar el proyecto en otro equipo,
 se genera una nueva base de datos con los
 10.000 registros de prueba.
 
+### 1. ¿Qué es CORS?
+
+CORS (Cross-Origin Resource Sharing) es un mecanismo de seguridad basado en HTTP que permite a un servidor indicar qué orígenes externos están autorizados para acceder a sus recursos desde un navegador web.
+
+Este mecanismo se relaciona con la política del mismo origen (Same-Origin Policy), que restringe determinadas interacciones entre aplicaciones alojadas en diferentes orígenes.
+
+Un origen está compuesto por:
+
+- **Protocolo:** HTTP o HTTPS.
+- **Dominio:** por ejemplo, localhost.
+- **Puerto:** por ejemplo, 8080 o 5500.
+
+Cuando alguno de estos elementos cambia, se considera que las aplicaciones pertenecen a orígenes diferentes.
+
+### 2. ¿Por qué ocurre el problema de CORS?
+
+Durante el desarrollo de aplicaciones web, es común ejecutar el frontend y el backend en servidores independientes.
+
+Por ejemplo:
+
+| Componente | Dirección |
+|---|---|
+| Frontend | http://localhost:5500 |
+| Backend | http://localhost:8080 |
+
+En este escenario, JavaScript puede intentar realizar una petición HTTP desde el frontend hacia el backend.
+
+Sin embargo, si Spring Boot no devuelve los encabezados CORS necesarios para autorizar el origen, el navegador bloquea el acceso a la respuesta.
 
